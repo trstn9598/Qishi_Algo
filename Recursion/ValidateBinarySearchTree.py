@@ -22,6 +22,38 @@ class Solution:
                 return (LBool and RBool and LMax < root.val < RMin), RMax, LMin
         Bool, Max, Min = BST(root)
         return Bool
+
+    
+# 99% O(n) implementation by in-order traverse using stack. 
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def isValidBST(self, root: TreeNode) -> bool:
+        stack = []
+        num = None
+        p = root
+        while 1:
+            while p:
+                stack.append(p)
+                p = p.left
+            if not stack:
+                return True
+            p = stack.pop()
+            if num is not None and num >= p.val:
+                return False
+            else:
+                num = p.val
+            p = p.right     
+            
+            
+            
             
                 
+                
+        
+           
                
